@@ -10,3 +10,7 @@ class Command(Enum):
     FORWARD = 'F'
     # backward 1 unit
     BACKWARD = 'B'
+
+    @classmethod
+    def has_value(cls, value: str):
+        return value in cls.value2member_map_
