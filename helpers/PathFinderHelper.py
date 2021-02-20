@@ -1,4 +1,3 @@
-from Robot import Robot
 from utils.Coordination import Coordination
 from utils.Direction import Direction
 
@@ -6,7 +5,9 @@ from utils.Direction import Direction
 class PathFinderHelper:
 
     @classmethod
-    def find_minimum_path_with_turn_amount(cls, start_point: Coordination, current_point: Coordination, current_direction: Direction) -> int:
+    def find_minimum_path_with_turn_amount(cls, start_point: Coordination,
+                                           current_point: Coordination,
+                                           current_direction: Direction) -> int:
 
         if start_point == current_point:
             return 0
@@ -63,3 +64,39 @@ class PathFinderHelper:
 
         return abs(start_point.x - current_point.x) + abs(start_point.y - current_point.y)
 
+    @classmethod
+    def find_path(cls, start_point: Coordination, current_position: Coordination):
+        return cls.find_path_recursion(start_point, current_position)
+
+    @classmethod
+    def find_path_recursion(cls, start_point: Coordination, current_point: Coordination,
+                            path_list: list[Coordination] = None):
+
+        if path_list is None:
+            path_list = [current_point]
+
+        if current_point.x != start_point.x:
+            next_y = current_point.y
+
+            if current_point.x > start_point.x:
+                next_x = current_point.x - 1
+            else:
+                next_x = current_point.x + 1
+
+            next_coordination = Coordination(next_x, next_y)
+            path_list.append(next_coordination)
+            cls.find_path_recursion(start_point=start_point, current_point=next_coordination, path_list=path_list)
+
+        elif current_point.y != start_point.y:
+            next_x = current_point.x
+
+            if current_point.y > start_point.y:
+                next_y = current_point.y - 1
+            else:
+                next_y = current_point.y + 1
+
+            next_coordination = Coordination(next_x, next_y)
+            path_list.append(next_coordination)
+            cls.find_path_recursion(start_point=start_point, current_point=next_coordination, path_list=path_list)
+
+        return path_list

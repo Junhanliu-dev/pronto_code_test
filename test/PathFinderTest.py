@@ -22,3 +22,10 @@ class TestPathFinder(unittest.TestCase):
 
         result = PathFinderHelper.find_minimum_path_with_turn_amount(start_coord, current_position, current_direction)
         self.assertEqual(result, 5)
+
+    def test_path_3(self):
+        start_coord = Coordination(0, 0)
+        current_coord = Coordination(2, 2)
+
+        print(PathFinderHelper.find_path(start_coord, current_coord))
+

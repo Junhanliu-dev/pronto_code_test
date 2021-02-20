@@ -17,7 +17,8 @@ class Simulator:
         for command in command_list:
             self.robot.move(command)
 
-        min_path = self.robot.find_ninimum_path()
+        min_path = self.robot.find_minimum_path()
+        print(f'the minimum path is: {min_path}')
 
     def get_command_input(self) -> list[tuple[Command, int]]:
         command_input = input('Command:')

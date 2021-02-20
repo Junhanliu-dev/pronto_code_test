@@ -11,9 +11,13 @@ class Coordination:
         self.y = y
 
     def __str__(self):
-        return "x: " + str(self.x) + " y: " + str(self.y)
+        return "(x: " + str(self.x) + " y: " + str(self.y) + ")"
 
+    # Override equal method to compare coordinates
     def __eq__(self, other):
         if isinstance(other, Coordination):
             return self.x == other.x and self.y == other.y
         return False
+
+    def __repr__(self):
+        return str(self)

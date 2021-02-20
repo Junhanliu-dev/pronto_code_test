@@ -1,5 +1,6 @@
 from typing import List
 from Command import Command
+from helpers.PathFinderHelper import PathFinderHelper
 from utils.Coordination import Coordination
 from utils.Direction import Direction
 from helpers.DirectionHelper import DirectionHelper
@@ -38,8 +39,11 @@ class Robot:
     def get_current_coordination(self):
         return self.current_coordination
 
-    def find_minimum_path(self):
-        pass
+    def find_minimum_path(self) -> int:
+        start_point = self.path[0].coordination
+        current_point = self.current_coordination
+        minimum_unit = PathFinderHelper.find_minimum_path_without_turn(start_point, current_point)
+        return minimum_unit
 
     def get_new_coordination(self, command: Command, steps: int) -> Coordination:
 

@@ -17,7 +17,6 @@ class DirectionHelper:
                 return Direction(4)
             else:
                 final_direction = total_steps % 4
-                print(Direction(final_direction))
                 return Direction(final_direction)
 
         if target_direction is Command.LEFT:
@@ -27,10 +26,8 @@ class DirectionHelper:
                 return Direction(4)
 
             if final_steps > 0:
-                print(Direction(final_steps))
                 return Direction(final_steps)
 
             final_direction = current_direction_enum_value + (abs(final_steps)) % 4
 
-            print(final_direction)
             return Direction(final_direction)
