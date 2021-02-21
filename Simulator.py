@@ -2,6 +2,8 @@ from Command import Command
 from helpers.CommandHelper import CommandHelper
 from Robot import Robot
 from errors.CommandParsingError import CommandParsingException
+from helpers.DefaultPathFinder import DefaultPathFinder
+from helpers.PathFinderBase import PathFinderBase
 
 
 class Simulator:
@@ -10,12 +12,17 @@ class Simulator:
     to move the robot.
     """
 
-    def __init__(self, robot: Robot):
+    def __init__(self, robot: Robot, finder: type(PathFinderBase) = None):
         """
         :param robot:
             A robot object in order to let simulator control the robot
         """
+        self.finder = finder
         self.robot: Robot = robot
+        if finder is None:
+            self.robot.set_path_finder(DefaultPathFinder)
+        else:
+            self.robot.set_path_finder(finder)
 
     def start(self):
         """

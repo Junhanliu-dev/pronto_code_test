@@ -1,6 +1,6 @@
 import unittest
 
-from helpers.PathFinderHelper import PathFinderHelper
+from helpers.DefaultPathFinder import PathFinderHelper
 from utils.Coordination import Coordination
 from utils.Direction import Direction
 

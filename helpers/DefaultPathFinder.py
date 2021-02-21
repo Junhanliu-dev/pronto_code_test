@@ -1,8 +1,10 @@
+from helpers.PathFinderBase import PathFinderBase
 from utils.Coordination import Coordination
 from utils.Direction import Direction
 
 
-class PathFinderHelper:
+class DefaultPathFinder(PathFinderBase):
+
     """
     Helper class to help robot find way back
     """
@@ -73,7 +75,7 @@ class PathFinderHelper:
                 return abs(current_direction_value - east_direction_value)
 
     @classmethod
-    def find_minimum_path_without_turn(cls, start_point: Coordination, current_point: Coordination) -> int:
+    def find_minimum_path_cost(cls, start_point: Coordination, current_point: Coordination) -> int:
         """
         The example, provided by the code challenge mark down file, indicates that the minimum cost turning back
         to original position excludes the turning cost, so the minimum steps to original coordination is the distance

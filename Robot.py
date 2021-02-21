@@ -1,6 +1,6 @@
 from typing import List
 from Command import Command
-from helpers.PathFinderHelper import PathFinderHelper
+from helpers.PathFinderBase import PathFinderBase
 from utils.Coordination import Coordination
 from utils.Direction import Direction
 from helpers.DirectionHelper import DirectionHelper
@@ -16,6 +16,10 @@ class Robot:
         self.current_direction: Direction = Direction.EAST
         self.current_coordination: Coordination = Coordination(0, 0)
         self.path.append(Position(self.current_coordination, self.current_direction))
+        self.path_finder = None
+
+    def set_path_finder(self, path_finder: type(PathFinderBase)):
+        self.path_finder = path_finder
 
     def move(self, instruction: tuple[Command, int]):
         """
@@ -50,13 +54,13 @@ class Robot:
     def find_minimum_path(self) -> int:
         start_point = self.path[0].coordination
         current_point = self.current_coordination
-        minimum_unit = PathFinderHelper.find_minimum_path_without_turn(start_point, current_point)
+        minimum_unit = self.path_finder.find_minimum_path_cost(start_point, current_point)
         return minimum_unit
 
     def find_way_back(self):
         start_point = self.path[0].coordination
         current_point = self.current_coordination
-        path_list = PathFinderHelper.find_path(start_point, current_point)
+        path_list = self.path_finder.find_path(start_point, current_point)
         return path_list
 
     def get_new_coordination(self, command: Command, steps: int) -> Coordination:
