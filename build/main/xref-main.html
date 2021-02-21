@@ -153,6 +153,7 @@ imports:
  &#8226;   <a href="#enum">enum</a>
  &#8226;   <a href="#functools">functools</a>
  &#8226;   <a href="#heapq">heapq</a>
+ &#8226;   <a href="#helpers.DefaultPathFinder">helpers.DefaultPathFinder</a>
  &#8226;   <a href="#io">io</a>
  &#8226;   <a href="#keyword">keyword</a>
  &#8226;   <a href="#linecache">linecache</a>
@@ -214,7 +215,7 @@ imported by:
   <a target="code" href="" type="text/plain"><tt>'org.python'</tt></a>
 <span class="moduletype">MissingModule</span>  <div class="import">
 imported by:
-    <a href="#copy">copy</a>
+    <a href="#pickle">pickle</a>
  &#8226;   <a href="#xml.sax">xml.sax</a>
 
   </div>
@@ -247,7 +248,7 @@ imported by:
 imports:
     <a href="#Command">Command</a>
  &#8226;   <a href="#helpers.DirectionHelper">helpers.DirectionHelper</a>
- &#8226;   <a href="#helpers.PathFinderHelper">helpers.PathFinderHelper</a>
+ &#8226;   <a href="#helpers.PathFinderBase">helpers.PathFinderBase</a>
  &#8226;   <a href="#typing">typing</a>
  &#8226;   <a href="#utils.Coordination">utils.Coordination</a>
  &#8226;   <a href="#utils.Direction">utils.Direction</a>
@@ -272,6 +273,8 @@ imports:
  &#8226;   <a href="#Robot">Robot</a>
  &#8226;   <a href="#errors.CommandParsingError">errors.CommandParsingError</a>
  &#8226;   <a href="#helpers.CommandHelper">helpers.CommandHelper</a>
+ &#8226;   <a href="#helpers.DefaultPathFinder">helpers.DefaultPathFinder</a>
+ &#8226;   <a href="#helpers.PathFinderBase">helpers.PathFinderBase</a>
 
   </div>
   <div class="import">
@@ -1274,6 +1277,7 @@ imported by:
  &#8226;   <a href="#contextlib">contextlib</a>
  &#8226;   <a href="#email._policybase">email._policybase</a>
  &#8226;   <a href="#functools">functools</a>
+ &#8226;   <a href="#helpers.PathFinderBase">helpers.PathFinderBase</a>
  &#8226;   <a href="#importlib.abc">importlib.abc</a>
  &#8226;   <a href="#importlib.metadata">importlib.metadata</a>
  &#8226;   <a href="#inspect">inspect</a>
@@ -2885,8 +2889,8 @@ imported by:
   <a target="code" href="/usr/local/Cellar/python%403.9/3.9.1_8/Frameworks/Python.framework/Versions/3.9/lib/python3.9/copy.py" type="text/plain"><tt>copy</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#'org.python'">'org.python'</a>
- &#8226;   <a href="#copyreg">copyreg</a>
+    <a href="#copyreg">copyreg</a>
+ &#8226;   <a href="#org">org</a>
  &#8226;   <a href="#types">types</a>
  &#8226;   <a href="#weakref">weakref</a>
 
@@ -6873,8 +6877,9 @@ imported by:
 <span class="moduletype">NamespacePackage</span>  <div class="import">
 imported by:
     <a href="#helpers.CommandHelper">helpers.CommandHelper</a>
+ &#8226;   <a href="#helpers.DefaultPathFinder">helpers.DefaultPathFinder</a>
  &#8226;   <a href="#helpers.DirectionHelper">helpers.DirectionHelper</a>
- &#8226;   <a href="#helpers.PathFinderHelper">helpers.PathFinderHelper</a>
+ &#8226;   <a href="#helpers.PathFinderBase">helpers.PathFinderBase</a>
 
   </div>
 
@@ -6899,6 +6904,26 @@ imported by:
 </div>
 
 <div class="node">
+  <a name="helpers.DefaultPathFinder"></a>
+  <a target="code" href="/Users/junhanliu/PycharmProjects/WovenGradCodingTest/helpers/DefaultPathFinder.py" type="text/plain"><tt>helpers.DefaultPathFinder</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#helpers">helpers</a>
+ &#8226;   <a href="#helpers.PathFinderBase">helpers.PathFinderBase</a>
+ &#8226;   <a href="#utils.Coordination">utils.Coordination</a>
+ &#8226;   <a href="#utils.Direction">utils.Direction</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#Simulator">Simulator</a>
+ &#8226;   <a href="#main.py">main.py</a>
+
+  </div>
+
+</div>
+
+<div class="node">
   <a name="helpers.DirectionHelper"></a>
   <a target="code" href="/Users/junhanliu/PycharmProjects/WovenGradCodingTest/helpers/DirectionHelper.py" type="text/plain"><tt>helpers.DirectionHelper</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
@@ -6917,18 +6942,20 @@ imported by:
 </div>
 
 <div class="node">
-  <a name="helpers.PathFinderHelper"></a>
-  <a target="code" href="/Users/junhanliu/PycharmProjects/WovenGradCodingTest/helpers/PathFinderHelper.py" type="text/plain"><tt>helpers.PathFinderHelper</tt></a>
+  <a name="helpers.PathFinderBase"></a>
+  <a target="code" href="/Users/junhanliu/PycharmProjects/WovenGradCodingTest/helpers/PathFinderBase.py" type="text/plain"><tt>helpers.PathFinderBase</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#helpers">helpers</a>
+    <a href="#abc">abc</a>
+ &#8226;   <a href="#helpers">helpers</a>
  &#8226;   <a href="#utils.Coordination">utils.Coordination</a>
- &#8226;   <a href="#utils.Direction">utils.Direction</a>
 
   </div>
   <div class="import">
 imported by:
     <a href="#Robot">Robot</a>
+ &#8226;   <a href="#Simulator">Simulator</a>
+ &#8226;   <a href="#helpers.DefaultPathFinder">helpers.DefaultPathFinder</a>
 
   </div>
 
@@ -8635,7 +8662,7 @@ imported by:
   <a target="code" href="" type="text/plain"><tt>org</tt></a>
 <span class="moduletype">MissingModule</span>  <div class="import">
 imported by:
-    <a href="#pickle">pickle</a>
+    <a href="#copy">copy</a>
 
   </div>
 
@@ -8854,7 +8881,8 @@ imported by:
   <a target="code" href="/usr/local/Cellar/python%403.9/3.9.1_8/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pickle.py" type="text/plain"><tt>pickle</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#_compat_pickle">_compat_pickle</a>
+    <a href="#'org.python'">'org.python'</a>
+ &#8226;   <a href="#_compat_pickle">_compat_pickle</a>
  &#8226;   <a href="#_pickle">_pickle</a>
  &#8226;   <a href="#codecs">codecs</a>
  &#8226;   <a href="#copyreg">copyreg</a>
@@ -8862,7 +8890,6 @@ imports:
  &#8226;   <a href="#functools">functools</a>
  &#8226;   <a href="#io">io</a>
  &#8226;   <a href="#itertools">itertools</a>
- &#8226;   <a href="#org">org</a>
  &#8226;   <a href="#pprint">pprint</a>
  &#8226;   <a href="#re">re</a>
  &#8226;   <a href="#struct">struct</a>
@@ -10939,7 +10966,8 @@ imports:
   <div class="import">
 imported by:
     <a href="#Robot">Robot</a>
- &#8226;   <a href="#helpers.PathFinderHelper">helpers.PathFinderHelper</a>
+ &#8226;   <a href="#helpers.DefaultPathFinder">helpers.DefaultPathFinder</a>
+ &#8226;   <a href="#helpers.PathFinderBase">helpers.PathFinderBase</a>
  &#8226;   <a href="#utils.Position">utils.Position</a>
 
   </div>
@@ -10958,8 +10986,8 @@ imports:
   <div class="import">
 imported by:
     <a href="#Robot">Robot</a>
+ &#8226;   <a href="#helpers.DefaultPathFinder">helpers.DefaultPathFinder</a>
  &#8226;   <a href="#helpers.DirectionHelper">helpers.DirectionHelper</a>
- &#8226;   <a href="#helpers.PathFinderHelper">helpers.PathFinderHelper</a>
  &#8226;   <a href="#utils.Position">utils.Position</a>
 
   </div>
