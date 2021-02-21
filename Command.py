@@ -2,6 +2,9 @@ from enum import Enum
 
 
 class Command(Enum):
+    """
+    the command set that user can use
+    """
     # turn left 90 deg
     LEFT = 'L'
     # turn right 90 deg

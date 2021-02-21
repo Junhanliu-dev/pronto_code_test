@@ -4,10 +4,17 @@ from errors.CommandParsingError import CommandParsingException
 
 
 class CommandHelper:
-
+    """
+    The helper method to transform string of commands to each individual command
+    """
     @classmethod
     def transform_command(cls, command: str) -> list[tuple[Command, int]]:
+        """
 
+        :param command:
+        :return:
+        Returns list of commands. Each command consists command enum and steps
+        """
         if command.strip() == '':
             raise CommandParsingException(command)
 

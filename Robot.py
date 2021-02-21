@@ -8,6 +8,9 @@ from utils.Position import Position
 
 
 class Robot:
+    """
+    The robot class
+    """
     def __init__(self):
         self.path: List[Position] = []
         self.current_direction: Direction = Direction.EAST
@@ -15,8 +18,13 @@ class Robot:
         self.path.append(Position(self.current_coordination, self.current_direction))
 
     def move(self, instruction: tuple[Command, int]):
-        command = instruction[0]
+        """
+        receive the instruction and use helper to move either turn left, right or forward, backward
+        :param instruction:
+        :return:
+        """
 
+        command = instruction[0]
         if command in (Command.LEFT, Command.RIGHT):
             new_direction: Direction = DirectionHelper.turn(self.current_direction, instruction)
             self.current_direction = new_direction
@@ -45,7 +53,20 @@ class Robot:
         minimum_unit = PathFinderHelper.find_minimum_path_without_turn(start_point, current_point)
         return minimum_unit
 
+    def find_way_back(self):
+        start_point = self.path[0].coordination
+        current_point = self.current_coordination
+        path_list = PathFinderHelper.find_path(start_point, current_point)
+        return path_list
+
     def get_new_coordination(self, command: Command, steps: int) -> Coordination:
+        """
+        the method that actually move the robot to the new coordination, and returns
+        a new coordination object that contains new direction and position
+        :param command:
+        :param steps:
+        :return:
+        """
 
         if self.current_direction is Direction.NORTH:
             new_x = self.current_direction.x
@@ -55,6 +76,7 @@ class Robot:
             if command is Command.BACKWARD:
                 new_y = self.current_coordination.y - steps
                 return Coordination(new_x, new_y)
+
         if self.current_direction is Direction.SOUTH:
             new_x = self.current_coordination.x
             if command is Command.FORWARD:
@@ -63,6 +85,7 @@ class Robot:
             if command is Command.BACKWARD:
                 new_y = self.current_coordination.y + steps
                 return Coordination(new_x, new_y)
+
         if self.current_direction is Direction.WEST:
             new_y = self.current_coordination.y
             if command is Command.FORWARD:
@@ -71,6 +94,7 @@ class Robot:
             if command is Command.BACKWARD:
                 new_x = self.current_coordination.x + steps
                 return Coordination(new_x, new_y)
+
         if self.current_direction is Direction.EAST:
             new_y = self.current_coordination.y
             if command is Command.FORWARD:

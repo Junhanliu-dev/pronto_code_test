@@ -24,8 +24,6 @@ class TestPathFinder(unittest.TestCase):
         self.assertEqual(result, 5)
 
     def test_path_3(self):
-        start_coord = Coordination(0, 0)
-        current_coord = Coordination(2, 2)
-
+        start_coord = Coordination(-5, -4)
+        current_coord = Coordination(-2, -2)
         print(PathFinderHelper.find_path(start_coord, current_coord))
-
